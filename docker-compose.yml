@@ -1,0 +1,13 @@
+version: "2"
+services:
+  gocd-server:
+    image: gocd/gocd-server:v17.5.0
+    ports:
+      - '80:8153'
+      - '8154:8154'
+  gocd-agent:
+    image: gocd/gocd-agent-centos-7:v17.5.0
+    environment:
+      - GO_SERVER_URL=https://gocd-server:8154/go
+    links:
+      - gocd-server
