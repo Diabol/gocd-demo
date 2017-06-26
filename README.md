@@ -26,3 +26,6 @@ To enable the agent, browse to http://localhost/go/agents, check the checkbox ne
 Go to the pipeline view at http://localhost/go/pipelines and make sure the pipeline is enabled (unpaused). Click the play button to run the pipeline!
 
 ![alt tag](https://raw.githubusercontent.com/Diabol/gocd-demo/master/docs/gocd_3_green_pipeline.png)
+
+You can also programmatically add pipeline configurations, e.g.
+    curl -X POST http://localhost/go/api/admin/pipelines -H 'Accept: application/vnd.go.cd.v4+json' -H 'Content-Type: application/json' -d @example-pipeline.json

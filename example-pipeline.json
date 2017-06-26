@@ -1,0 +1,51 @@
+{
+  "group": "my-pipelines",
+  "pipeline": {
+    "name": "vcs_pipeline_example",
+    "label_template": "1.0-${COUNT}",
+    "enable_pipeline_locking": true,
+    "template": null,
+    "materials": [
+      {
+        "type": "git",
+        "attributes": {
+          "url": "https://github.com/Diabol/gocd-demo.git",
+          "branch": "master",
+          "destination": "work",
+          "name": "gitMaterial",
+          "auto_update": false,
+          "filter": null
+        }
+      }
+    ],
+    "stages": [
+      {
+        "name": "commit_stage",
+        "fetch_materials": true,
+        "never_cleanup_artifacts": false,
+        "clean_working_directory": false,
+        "approval": null,
+        "environment_variables": [],
+        "jobs": [
+          {
+            "name": "build",
+            "run_instance_count": null,
+            "environment_variables": [],
+            "timeout": 180,
+            "tasks": [
+              {
+                "type": "exec",
+                "attributes": {
+                  "command": "echo",
+                  "arguments": [
+                    "building the application..."
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
